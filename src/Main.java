@@ -29,7 +29,7 @@ public class Main {
 
         String[] images = getManga("https://manaa.space/post/uploader/V85093GxAgERKBLa").getContent();
 
-        IO.zip(IO.cropImages(IO.getImages(images)), "도쿄구울 리메이크 1화.zip");
+        IO.pdf(IO.cropImages(IO.getImages(images)), "도쿄구울 리메이크 1화.pdf");
     }
 
     public static Manga getManga(String url) throws Exception {

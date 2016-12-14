@@ -1,3 +1,11 @@
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentInformation;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -79,6 +87,39 @@ public class IO {
         }
 
         zos.close();
+    }
+
+    public static void pdf(BufferedImage[] images, String filename) throws IOException{
+
+        PDDocument pdDocument = new PDDocument();
+
+        for (BufferedImage image : images) {
+
+            PDPage pdPage = new PDPage();
+
+            int width = image.getWidth();
+            int height = image.getHeight();
+
+            PDRectangle pdRectangle = new PDRectangle(width, height);
+            pdPage.setMediaBox(pdRectangle);
+
+            PDImageXObject pdImageXObject = LosslessFactory.createFromImage(pdDocument, image);
+            PDPageContentStream contentStream = new PDPageContentStream(pdDocument, pdPage);
+
+            contentStream.drawImage(pdImageXObject, 0, 0, width, height);
+            contentStream.close();
+
+            pdDocument.addPage(pdPage);
+        }
+
+        PDDocumentInformation pdDocumentInformation = new PDDocumentInformation();
+        //pdDocumentInformation.setTitle(name);
+        //pdDocumentInformation.setAuthor(author);
+        pdDocument.setDocumentInformation(pdDocumentInformation);
+
+        String file = System.getProperty("user.home") + "/Downloads/" + filename;
+        pdDocument.save(file);
+        pdDocument.close();
     }
 
     public static void download(String url, String file) throws IOException {
