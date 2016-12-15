@@ -3,7 +3,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Manga manga = ManaaSpace.getManga("https://manaa.space/post/uploader/8Z4zVqRMYnldyevb");
+        Manga manga = ManaaSpace.getManga("https://manaa.space/post/uploader/kR0LPlrA97EVra7N");
 
         System.out.println(manga.getName());
         System.out.println(manga.getIssueNumber());

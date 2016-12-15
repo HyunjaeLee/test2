@@ -167,8 +167,8 @@ public class ManaaSpace {
 
         String json = element.data();
         // fix json syntax error
-        String str[] = json.split("},", 2);
-        json = str[0] + "}}";
+        json = json.replaceFirst("},", "}");
+        System.out.println(json);
 
         JsonParser parser = new JsonParser();
         JsonElement jsonElement = parser.parse(json);
