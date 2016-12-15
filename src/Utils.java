@@ -19,7 +19,7 @@ import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-public class IO {
+public class Utils {
 
     public static BufferedImage[] getImages(String[] urls) throws IOException {
 
