@@ -1,4 +1,8 @@
-public class Manga {
+package element;
+
+import java.util.Arrays;
+
+public class MangaElement {
 
     private String thumbnail;
     private String name;
@@ -62,5 +66,18 @@ public class Manga {
 
     public void setImages(String[] images) {
         this.images = images;
+    }
+
+    @Override
+    public String toString() {
+        return "element.MangaElement{" +
+                "thumbnail='" + thumbnail + '\'' +
+                ", name='" + name + '\'' +
+                ", issueNumber='" + issueNumber + '\'' +
+                ", datePublished='" + datePublished + '\'' +
+                ", seriesName='" + seriesName + '\'' +
+                ", author='" + author + '\'' +
+                ", images=" + Arrays.toString(images) +
+                '}';
     }
 }

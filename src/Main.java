@@ -1,19 +1,9 @@
-
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
-        Manga manga = ManaaSpace.getManga("https://manaa.space/post/uploader/kR0LPlrA97EVra7N");
-
-        System.out.println(manga.getName());
-        System.out.println(manga.getIssueNumber());
-        System.out.println(manga.getSeriesName());
-        System.out.println(manga.getAuthor());
-        System.out.println(manga.getDatePublished());
-        System.out.println(manga.getThumbnail());
-
-        for(String url : manga.getImages()) {
-            System.out.println(url);
-        }
+        System.out.println(ManaaSpace.getAll());
+        System.out.println(ManaaSpace.getList("https://manaa.space/work/4ZPbgOgR8Vpjnvm6"));
+        System.out.println(ManaaSpace.getManga("https://manaa.space/post/uploader/W20mVEO6R03dzKMa"));
     }
 }
